@@ -3,12 +3,13 @@
     <head>
         <% include ./partials/head.ejs %>
     </head>
-    <body>
+    <body ng-app="app">
         <% include ./partials/navbar.ejs %>
         <div class="container">
             <div class="jumbotron">
                 <h1 class="text-center"><i class="fa fa-coffee"></i> The <%= title %></h1>
             </div>
+            <div ng-view=""></div>
         </div>
 
         <% include ./partials/scripts.ejs %>
