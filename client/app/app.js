@@ -11,7 +11,7 @@
 
         $routeProvider
             .when('/', {
-                template: '<h1>Hello Angular<h1>'
+                templateUrl: 'app/main.html'
             });
     }
 }());
