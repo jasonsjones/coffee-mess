@@ -37,7 +37,7 @@ require('./routes/user.routes')(router);
 // Register all our routes with /api
 app.use('/api', router);
 
-app.get('/', function (req, res) {
+app.get('*', function (req, res) {
     res.render('index', {title: 'Coffee Mess'});
 });
 
