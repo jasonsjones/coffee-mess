@@ -1,5 +1,20 @@
+html {
+  position: relative;
+  min-height: 100%; }
+
+body {
+  margin-bottom: 250px; }
+
 nav .input-group {
   margin: 10px; }
 
 nav .dropdown-menu {
   width: 250px; }
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  height: 250px;
+  background-color: #aaa;
+  width: 100%;
+  padding-top: 25px; }

@@ -1,3 +1,15 @@
+$footer_height: 250px;
+$footer_bg_color: #aaa;
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: $footer_height;
+}
+
 nav {
     .input-group {
         margin: 10px;
@@ -6,4 +18,13 @@ nav {
     .dropdown-menu {
         width: 250px;
     }
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    height: $footer_height;
+    background-color: $footer_bg_color;
+    width: 100%;
+    padding-top: 25px;
 }
