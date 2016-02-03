@@ -3,8 +3,10 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server/app.js",
+    "livereload": "live-reload --port 9091 client/",
     "build:scss": "node-sass client/_scss/main.scss -o client/css",
-    "watch:scss": "npm run build:scss -- -w"
+    "watch:scss": "npm run build:scss -- -w",
+    "watch:client": "npm run watch:scss & npm run livereload"
   },
   "dependencies": {
     "angular": "1.4.9",
@@ -20,5 +22,8 @@
     "node-sass": "3.4.2",
     "passport": "^0.2.1",
     "passport-http": "^0.2.2"
+  },
+  "devDependencies": {
+    "live-reload": "1.1.0"
   }
 }
