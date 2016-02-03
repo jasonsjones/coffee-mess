@@ -23,7 +23,7 @@ app.use(passport.initialize());
 var port = process.env.PORT || 3000;
 
 app.use(express.static('./node_modules'));
-app.use(express.static('./client'));
+app.use(express.static('./public'));
 
 // Create express router
 var router = express.Router();
