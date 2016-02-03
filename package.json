@@ -3,8 +3,8 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server/app.js",
-    "scss:watch": "node-sass -w client/_scss/main.scss -o client/css",
-    "scss": "node-sass client/_scss/main.scss -o client/css"
+    "build:scss": "node-sass client/_scss/main.scss -o client/css",
+    "watch:scss": "npm run build:scss -- -w"
   },
   "dependencies": {
     "angular": "1.4.9",
