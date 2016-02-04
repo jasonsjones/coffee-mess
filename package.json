@@ -4,6 +4,9 @@
   "scripts": {
     "start": "nodemon server/app.js",
     "start:mongodb": "mongod --bind_ip=$IP --dbpath=data --nojournal --smallfiles",
+    "prelint": "npm run jscs",
+    "lint": "jshint --reporter=node_modules/jshint-stylish public/**/*.js server/**/*.js",
+    "jscs": "jscs public/**/*.js server/**/*.js",
     "livereload": "live-reload --port 9091 public/",
     "build:css": "node-sass public/_scss/main.scss -o public/css",
     "watch:css": "npm run build:css -- -w",
@@ -25,6 +28,9 @@
     "passport-http": "^0.2.2"
   },
   "devDependencies": {
+    "jscs": "2.9.0",
+    "jshint": "2.9.1",
+    "jshint-stylish": "2.1.0",
     "live-reload": "1.1.0"
   }
 }
