@@ -10,7 +10,7 @@
     "livereload": "live-reload --port 9091 public/",
     "build:css": "node-sass public/_scss/main.scss -o public/css",
     "watch:css": "npm run build:css -- -w",
-    "watch:public": "npm run watch:scss & npm run livereload"
+    "watch:public": "npm run watch:css & npm run livereload"
   },
   "dependencies": {
     "angular": "1.4.9",
