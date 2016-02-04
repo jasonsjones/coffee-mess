@@ -32,4 +32,4 @@ function strategyFn(username, password, callback) {
     });
 }
 
-exports.isAuthenticated = passport.authenticate('basic', { session: false });
+exports.isAuthenticated = passport.authenticate('basic', {session: false});

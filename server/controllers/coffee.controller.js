@@ -17,13 +17,13 @@ exports.postCoffees = function (req, res) {
         if (err) {
             res.send(err);
         }
-        res.json({ message: 'Coffee added to the locker!', data: coffee });
+        res.json({message: 'Coffee added to the locker!', data: coffee});
     });
 };
 
 // Create endpoint /api/coffee for GET
 exports.getCoffees =  function (req, res) {
-    Coffee.find({ userId: req.user._id }, function (err, coffee) {
+    Coffee.find({userId: req.user._id}, function (err, coffee) {
         if (err) {
             res.send(err);
         }
@@ -34,7 +34,7 @@ exports.getCoffees =  function (req, res) {
 // Create endpoint /api/coffee/:coffee_id for GET
 exports.getCoffee = function (req, res) {
     // Use the coffee model to find a specific coffee
-    Coffee.findOne({ userId: req.user._id, _id: req.params.coffee_id }, function (err, coffee) {
+    Coffee.findOne({userId: req.user._id, _id: req.params.coffeeId}, function (err, coffee) {
         if (err) {
             res.send(err);
         }
@@ -45,7 +45,7 @@ exports.getCoffee = function (req, res) {
 // Create endpoint /api/coffee/:coffee_id for PUT
 exports.putCoffee = function (req, res) {
     // Use the coffee model to find a specific coffee
-    Coffee.findOne({ userId: req.user._id, _id: req.params.coffee_id }, function (err, coffee) {
+    Coffee.findOne({userId: req.user._id, _id: req.params.coffeeId}, function (err, coffee) {
         if (err) {
             res.send(err);
         }
@@ -66,10 +66,10 @@ exports.putCoffee = function (req, res) {
 // Create endpoint /api/coffee/:coffee_id for DELETE
 exports.deleteCoffee = function (req, res) {
     // Use the coffee model to find a specific coffee and remove it
-    Coffee.findByIdAndRemove(req.params.coffee_id).exec(function (err) {
+    Coffee.findByIdAndRemove(req.params.coffeeIid).exec(function (err) {
         if (err) {
             res.send(err);
         }
-        res.json({ message: 'Coffee removed from the locker!' });
+        res.json({message: 'Coffee removed from the locker!'});
     });
 };
