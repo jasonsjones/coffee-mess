@@ -6,15 +6,17 @@ body {
   margin-bottom: 250px; }
 
 nav .input-group {
-  margin: 10px; }
+  margin: 10px auto; }
 
 nav .dropdown-menu {
   width: 250px; }
+  nav .dropdown-menu button {
+    margin: 10px; }
 
 .footer {
   position: absolute;
   bottom: 0;
   height: 250px;
-  background-color: #aaa;
+  background-color: #182838;
   width: 100%;
   padding-top: 25px; }

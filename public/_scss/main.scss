@@ -1,5 +1,5 @@
 $footer_height: 250px;
-$footer_bg_color: #aaa;
+$footer_bg_color: #375a7f;
 
 html {
     position: relative;
@@ -12,11 +12,14 @@ body {
 
 nav {
     .input-group {
-        margin: 10px;
+        margin: 10px auto;
     }
 
     .dropdown-menu {
         width: 250px;
+        button {
+            margin: 10px;
+        }
     }
 }
 
@@ -24,7 +27,7 @@ nav {
     position: absolute;
     bottom: 0;
     height: $footer_height;
-    background-color: $footer_bg_color;
+    background-color: darken($footer_bg_color, 20%);
     width: 100%;
     padding-top: 25px;
 }
