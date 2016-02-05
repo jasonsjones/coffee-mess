@@ -6,6 +6,7 @@
 
     //==================
     config.$inject = ['$routeProvider', '$locationProvider'];
+
     function config($routeProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
 
@@ -15,6 +16,9 @@
             })
             .when('/about', {
                 templateUrl: 'app/about.html'
+            })
+            .when('/register', {
+                templateUrl: 'app/register/register.html'
             });
     }
 }());

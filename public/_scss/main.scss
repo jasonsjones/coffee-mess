@@ -23,6 +23,19 @@ nav {
     }
 }
 
+.form-register {
+    max-width: 350px;
+    margin: 0 auto;
+    .form-control {
+        border-radius: 0;
+        border-bottom: 1px solid #ccc;
+    }
+    button {
+        border-radius: 0;
+        margin-top: 10px;
+    }
+}
+
 .footer {
     position: absolute;
     bottom: 0;

@@ -13,6 +13,16 @@ nav .dropdown-menu {
   nav .dropdown-menu button {
     margin: 10px; }
 
+.form-register {
+  max-width: 350px;
+  margin: 0 auto; }
+  .form-register .form-control {
+    border-radius: 0;
+    border-bottom: 1px solid #ccc; }
+  .form-register button {
+    border-radius: 0;
+    margin-top: 10px; }
+
 .footer {
   position: absolute;
   bottom: 0;
