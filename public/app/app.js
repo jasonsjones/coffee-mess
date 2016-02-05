@@ -18,7 +18,9 @@
                 templateUrl: 'app/about.html'
             })
             .when('/register', {
-                templateUrl: 'app/register/register.html'
+                templateUrl: 'app/register/register.html',
+                controller: 'RegistrationController',
+                controllerAs: 'vm'
             });
     }
 }());
