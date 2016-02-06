@@ -6,7 +6,8 @@
                class="form-control" placeholder="Username" ng-model="vm.user.username"
                required autofocus>
 
-        <div class="help-block" ng-messages="registrationForm.username.$error">
+        <div class="help-block" ng-messages="registrationForm.username.$error"
+             ng-show="registrationForm.username.$touched">
             <div ng-messages-include="app/register/messages.html"></div>
         </div>
 
@@ -14,7 +15,8 @@
                class="form-control" placeholder="Password" ng-model="vm.user.password"
                ng-minlength="4" required>
 
-        <div ng-messages="registrationForm.password.$error">
+        <div ng-messages="registrationForm.password.$error"
+             ng-show="registrationForm.password.$touched">
             <div ng-messages-include="app/register/messages.html"></div>
         </div>
 
@@ -22,7 +24,8 @@
                class="form-control" placeholder="Confirm Password" ng-model="vm.user.confirmPassword"
                compare-to="vm.user.password">
 
-        <div ng-messages="registrationForm.confirmPassword.$error">
+        <div ng-messages="registrationForm.confirmPassword.$error"
+             ng-show="registrationForm.confirmPassword.$touched">
             <div ng-messages-include="app/register/messages.html"></div>
         </div>
 
