@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <% include ./partials/head.ejs %>
-    </head>
-    <body ng-app="app">
-        <% include ./partials/navbar.ejs %>
+
+<head>
+    <% include ./partials/head.ejs %>
+</head>
+
+<body ng-app="app">
+    <% include ./partials/navbar.ejs %>
         <div ng-view=""></div>
 
+        <div class="alert alert-{{alert.type}} animated main-alert" ng-class="{'flipInY': alert.show, 'flipOutY': !alert.show, 'alert-hidden': !alert.hasBeenShown}">
+            <strong>{{alert.title}}</strong> {{alert.message}}
+
+        </div>
+
         <% include ./partials/footer.ejs %>
-        <% include ./partials/scripts.ejs %>
-    </body>
+            <% include ./partials/scripts.ejs %>
+</body>
+
 </html>

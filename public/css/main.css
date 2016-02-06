@@ -23,6 +23,13 @@ nav .dropdown-menu {
     border-radius: 0;
     margin-top: 10px; }
 
+.main-alert {
+  max-width: 400px;
+  margin: 10px auto; }
+
+.alert-hidden {
+  visibility: hidden; }
+
 .footer {
   position: absolute;
   bottom: 0;
