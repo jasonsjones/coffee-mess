@@ -10,8 +10,8 @@
 
         vm.submit = submit;
 
-        function submit() {
-            auth.register()
+        function submit(user) {
+            auth.register(user)
                 .then(function (data) {
                     alert('info', 'Welcome, ', data.name + '. You are now registered', 3000);
                 });

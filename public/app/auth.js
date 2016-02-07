@@ -12,10 +12,10 @@
 
         return factory;
 
-        function register() {
+        function register(user) {
             var deferred = $q.defer();
 
-            deferred.resolve({success: true, msg: 'user registered', name: 'jason'});
+            deferred.resolve({success: true, msg: 'user registered', name: user.username});
 
             return deferred.promise;
 
