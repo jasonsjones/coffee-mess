@@ -4,14 +4,17 @@
         .controller('RegistrationController', RegistrationController);
 
     //=====================
-    function RegistrationController(alert) {
+    function RegistrationController(alert, auth) {
         var vm = this;
         vm.user = {};
 
         vm.submit = submit;
 
         function submit() {
-            console.log('submitting form...');
+            auth.register()
+                .then(function (data) {
+                    alert('info', 'Welcome, ', data.name + '. You are now registered', 3000);
+                });
         }
     }
 }());
