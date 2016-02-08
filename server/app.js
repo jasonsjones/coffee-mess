@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 
 // Connect to the coffeelocker MongoDB
-mongoose.connect('mongodb://localhost:27017/coffeelocker');
+mongoose.connect('mongodb://localhost:27017/coffeemess');
 
 // Create the express application
 var app = express();
@@ -13,7 +13,7 @@ var app = express();
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 // use the passport package in our app
