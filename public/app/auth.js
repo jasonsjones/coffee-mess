@@ -4,7 +4,7 @@
         .factory('auth', auth);
 
     //=====================
-    function auth($q) {
+    function auth($q, $http) {
 
         var factory = {
             register: register
@@ -15,7 +15,10 @@
         function register(user) {
             var deferred = $q.defer();
 
-            deferred.resolve({success: true, msg: 'user registered', name: user.username});
+            $http.post('/api/register', user)
+                .success(function (data) {
+                    deferred.resolve(data);
+                });
 
             return deferred.promise;
 

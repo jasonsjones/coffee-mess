@@ -11,8 +11,13 @@ exports.postUsers = function (req, res) {
     user.save(function (err) {
         if (err) {
             res.send(err);
+        } else {
+            res.json({
+                success: true,
+                message: 'New coffee drinker added to the coffee messs',
+                name: user.username
+            });
         }
-        res.json({message: 'New coffee drinker added to the coffee messs'});
     });
 };
 
