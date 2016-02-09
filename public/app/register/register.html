@@ -6,7 +6,7 @@
                class="form-control" placeholder="Username" ng-model="vm.user.username"
                required autofocus>
 
-        <div class="help-block" ng-messages="registrationForm.username.$error"
+        <div ng-messages="registrationForm.username.$error"
              ng-show="registrationForm.username.$touched">
             <div ng-messages-include="app/register/messages.html"></div>
         </div>
