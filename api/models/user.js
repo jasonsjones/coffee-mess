@@ -50,5 +50,11 @@ UserSchema.methods.verifyPassword = function (password, callback) {
     });
 };
 
+UserSchema.methods.toJSON = function () {
+    var user = this.toObject();
+    delete user.password;
+    return user;
+};
+
 // export the mongoose model
 module.exports = mongoose.model('User', UserSchema);
