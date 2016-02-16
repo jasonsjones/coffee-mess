@@ -13,7 +13,8 @@
         function submit(user) {
             auth.register(user)
                 .then(function (data) {
-                    alert('info', 'Welcome, ', data.name + '. You are now registered', 3000);
+                    console.log(data.user);
+                    alert('info', 'Welcome, ', data.user.username + '. You are now registered', 3000);
                 });
         }
     }
