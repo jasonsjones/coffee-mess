@@ -20,6 +20,7 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.12.0",
     "bootstrap": "3.3.6",
+    "crypto": "0.0.3",
     "ejs": "2.4.1",
     "express": "^4.12.0",
     "font-awesome": "4.5.0",
