@@ -1,5 +1,6 @@
 // Load require packages
 var User = require('../models/user');
+var jwt = require('../services/jwt');
 
 // Create endpoint /api/users for POST
 exports.postUsers = function (req, res) {
@@ -10,15 +11,12 @@ exports.postUsers = function (req, res) {
         password: user.password
     });
 
+
     newUser.save(function (err) {
         if (err) {
             res.send(err);
         } else {
-            res.status(200).json({
-                success: true,
-                message: 'New coffee drinker added to the coffee messs',
-                user: newUser.toJSON()
-            });
+            createSendToken(newUser, res);
         }
     });
 };
@@ -32,3 +30,18 @@ exports.getUsers = function (req, res) {
         res.json(users);
     });
 };
+
+function createSendToken(user, res) {
+    var payload = {
+        sub: user._id
+    };
+
+    var token = jwt.encode(payload, 'secretKey');
+
+    res.status(200).json({
+        success: true,
+        message: 'New coffee drinker added to the coffee messs',
+        user: user.toJSON(),
+        token: token
+    });
+}
