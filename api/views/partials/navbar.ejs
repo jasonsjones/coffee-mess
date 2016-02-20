@@ -17,7 +17,7 @@
                 <li ng-class="{active: vm.isActive('/')}"> <a href="/"><i class="fa fa-home"></i> Home<span class="sr-only">(current)</span> </a> </li>
                 <li ng-class="{active: vm.isActive('/about')}"> <a href="/about">About</a> </li>
 
-                <li class="dropdown" ng-hide="vm.currentUser"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                <li class="dropdown" ng-show="!vm.isAuthenticated()"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
                     role="button" aria-haspopup="true" aria-expanded="false">Login <span class="caret"></span></a>
                     <div class="dropdown-menu">
                         <div class="input-group">
@@ -32,7 +32,7 @@
                         </div>
                     </div>
                 </li>
-                <li ng-class="{active: vm.isActive('/register')}"> <a href="/register"><i class="fa fa-user-plus"></i> Register</a> </li>
+                <li ng-hide="vm.isAuthenticated()" ng-class="{active: vm.isActive('/register')}"> <a href="/register"><i class="fa fa-user-plus"></i> Register</a> </li>
 
             </ul>
         </div>

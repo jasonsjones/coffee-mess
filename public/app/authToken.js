@@ -28,7 +28,7 @@
         }
 
         function isAuthenticated() {
-            return !!this.getToken();
+            return !!getToken();
         }
 
     }
