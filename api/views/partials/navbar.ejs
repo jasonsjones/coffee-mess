@@ -33,6 +33,7 @@
                     </div>
                 </li>
                 <li ng-hide="vm.isAuthenticated()" ng-class="{active: vm.isActive('/register')}"> <a href="/register"><i class="fa fa-user-plus"></i> Register</a> </li>
+                <li ng-show="vm.isAuthenticated()" ng-click="vm.logout()"><a href="#">Log out</a></li>
 
             </ul>
         </div>

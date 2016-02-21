@@ -8,28 +8,37 @@
     function authToken($window) {
         var storage = $window.localStorage;
         var cachedToken = null;
+        var userToken = 'userToken';
 
-        return {
+        var authToken = {
             setToken: setToken,
             getToken: getToken,
+            removeToken: removeToken,
             isAuthenticated: isAuthenticated
         };
 
         function setToken(token) {
             cachedToken = token;
-            storage.setItem('userToken', token);
+            storage.setItem(userToken, token);
         }
 
         function getToken() {
             if (!cachedToken) {
-                cachedToken = storage.getItem('userToken');
+                cachedToken = storage.getItem(userToken);
             }
             return cachedToken;
         }
 
-        function isAuthenticated() {
-            return !!getToken();
+        function removeToken() {
+            cachedToken = null;
+            storage.removeItem(userToken);
         }
+
+        function isAuthenticated() {
+            return !!authToken.getToken();
+        }
+
+        return authToken;
 
     }
 

@@ -9,9 +9,16 @@
         var vm = this;
 
         vm.isAuthenticated = authToken.isAuthenticated;
+        vm.logout = logout;
+        vm.isActive = isActive;
 
-        vm.isActive = function (viewLocation) {
+        function isActive(viewLocation) {
             return viewLocation === $location.path();
-        };
+        }
+
+        function logout() {
+            authToken.removeToken();
+            $location.path('/');
+        }
     }
 }());
