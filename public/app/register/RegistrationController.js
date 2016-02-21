@@ -4,7 +4,7 @@
         .controller('RegistrationController', RegistrationController);
 
     //=====================
-    function RegistrationController(alert, auth, authToken) {
+    function RegistrationController($location, alert, auth, authToken) {
         var vm = this;
         vm.user = {};
 
@@ -16,6 +16,7 @@
                     console.log(data.user);
                     alert('info', 'Welcome, ', data.user.username + '. You are now registered', 3000);
                     authToken.setToken(data.token);
+                    $location.path('/');
                 });
         }
     }
