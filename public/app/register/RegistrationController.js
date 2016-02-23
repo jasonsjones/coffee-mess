@@ -4,6 +4,7 @@
         .controller('RegistrationController', RegistrationController);
 
     //=====================
+    RegistrationController.$inject = ['$location', 'alert', 'auth', 'authToken'];
     function RegistrationController($location, alert, auth, authToken) {
         var vm = this;
         vm.user = {};
@@ -14,7 +15,8 @@
             auth.register(user)
                 .then(function (data) {
                     console.log(data.user);
-                    alert('info', 'Welcome, ', data.user.username + '. You are now registered', 3000);
+                    alert('success', 'Account Created!',  'Welcome, ' + data.user.username +
+                          '. You are now registered.', 3000);
                     authToken.setToken(data.token);
                     $location.path('/');
                 });
