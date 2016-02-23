@@ -21,6 +21,11 @@
                 templateUrl: 'app/register/register.html',
                 controller: 'RegistrationController',
                 controllerAs: 'vm'
+            })
+            .when('/coffee', {
+                templateUrl: 'app/coffee/coffee.html',
+                controller: 'CoffeeController',
+                controllerAs: 'vm'
             });
     }
 }());
