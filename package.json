@@ -4,6 +4,7 @@
   "scripts": {
     "start": "nodemon api/app.js",
     "start:mongodb": "mongod --bind_ip=$IP --dbpath=data --nojournal --smallfiles",
+    "start:ngrok": "ngrok http -subdomain=coffee 3000",
     "prelint": "npm run jscs",
     "lint": "jshint --reporter=node_modules/jshint-stylish public/**/*.js api/*.js api/**/*.js",
     "jscs": "jscs public/**/*.js api/*.js api/**/*.js",
