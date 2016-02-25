@@ -27,12 +27,14 @@ exports.getCoffees =  function (req, res) {
         return res.status(401).send({message: 'You are not authorized'});
     }
 
-    Coffee.find({userId: req.user._id}, function (err, coffee) {
-        if (err) {
-            res.send(err);
-        }
-        res.json(coffee);
-    });
+    res.json(['Pike Place', 'Morning Joe', 'Expresso Roast']);
+
+    // Coffee.find({userId: req.user._id}, function (err, coffee) {
+    //     if (err) {
+    //         res.send(err);
+    //     }
+    //     res.json(coffee);
+    // });
 };
 
 // Create endpoint /api/coffee/:coffee_id for GET
