@@ -6,7 +6,7 @@ module.exports = function (api) {
     // Create new route with prefix /coffee
     api.route('/coffee')
         .post(authCtrl.isAuthenticated, coffeeCtrl.postCoffees)
-        .get(authCtrl.isAuthenticated, coffeeCtrl.getCoffees);
+        .get(coffeeCtrl.getCoffees);
 
     api.route('/coffee/:coffeeId')
         .get(authCtrl.isAuthenticated, coffeeCtrl.getCoffee)

@@ -23,6 +23,10 @@ exports.postCoffees = function (req, res) {
 
 // Create endpoint /api/coffee for GET
 exports.getCoffees =  function (req, res) {
+    if (!req.headers.authorization) {
+        return res.status(401).send({message: 'You are not authorized'});
+    }
+
     Coffee.find({userId: req.user._id}, function (err, coffee) {
         if (err) {
             res.send(err);
