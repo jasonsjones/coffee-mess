@@ -5,9 +5,9 @@
         .config(config);
 
     //==================
-    config.$inject = ['$routeProvider', '$locationProvider'];
+    config.$inject = ['$routeProvider', '$locationProvider', '$httpProvider'];
 
-    function config($routeProvider, $locationProvider) {
+    function config($routeProvider, $locationProvider, $httpProvider) {
         $locationProvider.html5Mode(true);
 
         $routeProvider
@@ -27,5 +27,7 @@
                 controller: 'CoffeeController',
                 controllerAs: 'vm'
             });
+
+        $httpProvider.interceptors.push('authInterceptor');
     }
 }());
