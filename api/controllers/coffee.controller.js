@@ -1,5 +1,6 @@
 // Load required pkgs
 var Coffee = require('../models/coffee');
+var jwt = require('../services/jwt');
 
 // Create endpoint /api/coffee for POSTS
 exports.postCoffees = function (req, res) {
@@ -25,6 +26,13 @@ exports.postCoffees = function (req, res) {
 exports.getCoffees =  function (req, res) {
     if (!req.headers.authorization) {
         return res.status(401).send({message: 'You are not authorized'});
+    }
+
+    var token = req.headers.authorization.split(' ')[1];
+    var payload = jwt.decode(token, 'secretKey');
+
+    if (!payload.sub) {
+        res.status(401).send({message: 'Authentication failied'});
     }
 
     res.json(['Pike Place', 'Morning Joe', 'Expresso Roast']);
