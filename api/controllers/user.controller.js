@@ -33,7 +33,7 @@ exports.getUsers = function (req, res) {
 
 function createSendToken(user, res) {
     var payload = {
-        sub: user._id
+        sub: user.id
     };
 
     var token = jwt.encode(payload, 'secretKey');
