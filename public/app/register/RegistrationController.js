@@ -19,6 +19,8 @@
                           '. You are now registered.', 3000);
                     authToken.setToken(data.token);
                     $location.path('/');
+                }, function (err) {
+                    alert('danger', 'Account Error', 'Unable to register account');
                 });
         }
     }
