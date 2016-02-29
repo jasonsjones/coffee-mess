@@ -1,6 +1,6 @@
 // Load required pkgs
 var Coffee = require('../models/coffee');
-var jwt = require('../services/jwt');
+var jwt = require('jwt-simple');
 
 // Create endpoint /api/coffee for POSTS
 exports.postCoffees = function (req, res) {

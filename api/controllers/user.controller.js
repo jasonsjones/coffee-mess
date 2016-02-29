@@ -1,6 +1,6 @@
 // Load require packages
 var User = require('../models/user');
-var jwt = require('../services/jwt');
+var jwt = require('jwt-simple');
 
 // Create endpoint /api/users for POST
 exports.postUsers = function (req, res) {

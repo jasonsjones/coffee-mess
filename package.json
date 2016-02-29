@@ -27,6 +27,7 @@
     "express": "^4.12.0",
     "font-awesome": "4.5.0",
     "jquery": "2.2.0",
+    "jwt-simple": "0.4.1",
     "mongoose": "^4.3.0",
     "node-sass": "3.4.2",
     "passport": "^0.2.1",
