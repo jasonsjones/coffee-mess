@@ -31,6 +31,32 @@ exports.getUsers = function (req, res) {
     });
 };
 
+exports.loginUser = function (req, res) {
+    req.user = req.body;
+
+    User.findOne({email: req.user.email}, function (err, user) {
+        if (err) {
+            throw err;
+        }
+
+        if (!user) {
+            return res.status(401).send({message: 'Wrong email/password'});
+        }
+
+        user.verifyPassword(req.user.password, function (err, isMatch) {
+            if (err) {
+                throw err;
+            }
+
+            if (!isMatch) {
+                return res.status(401).send({message: 'Wrong email/password'});
+            }
+            createSendToken(user, res);
+        });
+
+    });
+};
+
 function createSendToken(user, res) {
     var payload = {
         sub: user.id
@@ -40,7 +66,6 @@ function createSendToken(user, res) {
 
     res.status(200).json({
         success: true,
-        message: 'New coffee drinker added to the coffee messs',
         user: user.toJSON(),
         token: token
     });

@@ -10,4 +10,7 @@ module.exports = function (api) {
 
     api.route('/register')
         .post(userCtrl.postUsers);
+
+    api.route('/login')
+        .post(userCtrl.loginUser);
 };
