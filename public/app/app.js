@@ -17,6 +17,9 @@
             .when('/about', {
                 templateUrl: 'app/about.html'
             })
+            .when('/login', {
+                templateUrl: 'app/login.html'
+            })
             .when('/register', {
                 templateUrl: 'app/register/register.html',
                 controller: 'RegistrationController',
