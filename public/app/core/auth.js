@@ -7,7 +7,8 @@
     function auth($q, $http) {
 
         var factory = {
-            register: register
+            register: register,
+            login: login
         };
 
         return factory;
@@ -21,7 +22,17 @@
                 });
 
             return deferred.promise;
+        }
 
+        function login(user) {
+            var deferred = $q.defer();
+
+            $http.post('/api/login', user)
+                .success(function (data) {
+                    deferred.resolve(data);
+                });
+
+            return deferred.promise;
         }
     }
 }());

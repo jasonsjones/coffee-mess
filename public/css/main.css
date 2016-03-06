@@ -13,13 +13,13 @@ nav .dropdown-menu {
   nav .dropdown-menu button {
     margin: 10px; }
 
-.form-register {
+.form-register, .form-login {
   max-width: 350px;
   margin: 0 auto; }
-  .form-register .form-control {
+  .form-register .form-control, .form-login .form-control {
     border-radius: 0;
     border-bottom: 1px solid #ccc; }
-  .form-register button {
+  .form-register button, .form-login button {
     border-radius: 0;
     margin-top: 10px; }
 

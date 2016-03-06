@@ -15,23 +15,24 @@
         <div class="collapse navbar-collapse" id="cm-navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li ng-class="{active: vm.isActive('/')}"> <a href="/"><i class="fa fa-home"></i> Home<span class="sr-only">(current)</span> </a> </li>
-                <li ng-class="{active: vm.isActive('/about')}"> <a href="/about">About</a> </li>
+                <li ng-class="{active: vm.isActive('/about')}"> <a href="/about">About</a></li>
+                <li ng-hide="vm.isAuthenticated()" ng-class="{active: vm.isActive('/login')}"> <a href="/login">Login</a></li>
 
-                <li class="dropdown" ng-show="!vm.isAuthenticated()"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                <%# <li class="dropdown" ng-show="!vm.isAuthenticated()"><a href="#" class="dropdown-toggle" data-toggle="dropdown" ng-controller="LoginController as login"
                     role="button" aria-haspopup="true" aria-expanded="false">Login <span class="caret"></span></a>
                     <div class="dropdown-menu">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="username">
+                            <input type="text" class="form-control" placeholder="username" ng-model="login.user.username">
                         </div>
                         <div class="input-group">
-                            <input type="password" class="form-control" placeholder="password">
+                            <input type="password" class="form-control" placeholder="password" ng-model="login.user.password">
                         </div>
                         <div class="input-group">
-                            <button type="submit" class="btn btn-primary"> Submit</button>
+                            <button type="submit" class="btn btn-primary" ng-click="login.login(login.user)"> Submit</button>
                             <button type="reset" class="btn btn-default"> Cancel</button>
                         </div>
                     </div>
-                </li>
+                </li>%>
                 <li ng-hide="vm.isAuthenticated()" ng-class="{active: vm.isActive('/register')}"> <a href="/register"><i class="fa fa-user-plus"></i> Register</a> </li>
                 <li ng-show="vm.isAuthenticated()" ng-click="vm.logout()"><a href="#">Log out</a></li>
 
