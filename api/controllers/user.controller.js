@@ -11,7 +11,6 @@ exports.postUsers = function (req, res) {
         password: user.password
     });
 
-
     newUser.save(function (err) {
         if (err) {
             res.send(err);
@@ -34,7 +33,7 @@ exports.getUsers = function (req, res) {
 exports.loginUser = function (req, res) {
     req.user = req.body;
 
-    User.findOne({email: req.user.email}, function (err, user) {
+    User.findOne({username: req.user.username}, function (err, user) {
         if (err) {
             throw err;
         }
