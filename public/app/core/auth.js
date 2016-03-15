@@ -19,6 +19,9 @@
             $http.post('/api/register', user)
                 .success(function (data) {
                     deferred.resolve(data);
+                })
+                . error(function (err) {
+                    deferred.reject(err);
                 });
 
             return deferred.promise;
@@ -30,6 +33,9 @@
             $http.post('/api/login', user)
                 .success(function (data) {
                     deferred.resolve(data);
+                })
+                .error(function (err) {
+                    deferred.reject(err);
                 });
 
             return deferred.promise;
