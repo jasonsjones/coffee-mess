@@ -11,11 +11,21 @@ exports.postUsers = function (req, res) {
         password: user.password
     });
 
-    newUser.save(function (err) {
+    User.findOne({username: newUser.username}, function (err, user) {
         if (err) {
-            res.send(err);
+            throw err;
+        }
+        if (user) {
+            console.log('user already exists');
+            return res.status(401).send({message: 'user already exists'});
         } else {
-            createSendToken(newUser, res);
+            newUser.save(function (err) {
+                if (err) {
+                    res.send(err);
+                } else {
+                    createSendToken(newUser, res);
+                }
+            });
         }
     });
 };
