@@ -20,7 +20,7 @@
                 .success(function (data) {
                     deferred.resolve(data);
                 })
-                . error(function (err) {
+                .error(function (err) {
                     deferred.reject(err);
                 });
 
