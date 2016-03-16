@@ -4,8 +4,8 @@
         .controller('NavController', NavController);
 
     //=====================
-    NavController.$inject = ['$location', 'authToken'];
-    function NavController($location, authToken) {
+    NavController.$inject = ['$location', 'authToken', 'alert'];
+    function NavController($location, authToken, alert) {
         var vm = this;
 
         vm.isAuthenticated = authToken.isAuthenticated;
@@ -18,6 +18,7 @@
 
         function logout() {
             authToken.removeToken();
+            alert('success', 'Logout Successful:', 'you have successfully logged out, have a great day!');
             $location.path('/');
         }
     }
