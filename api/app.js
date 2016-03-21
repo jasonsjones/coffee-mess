@@ -19,6 +19,7 @@ app.use(bodyParser.json());
 
 // use the passport package in our app
 app.use(passport.initialize());
+require('./config/passport')();
 
 // Use environment defined port or 300
 var port = process.env.PORT || config.port;

@@ -1,6 +1,7 @@
 // Load require packages
 var User = require('../models/user');
 var jwt = require('jwt-simple');
+var passport = require('passport');
 
 // Create endpoint /api/users for POST
 exports.postUsers = function (req, res) {
@@ -40,30 +41,19 @@ exports.getUsers = function (req, res) {
     });
 };
 
-exports.loginUser = function (req, res) {
-    req.user = req.body;
-
-    User.findOne({username: req.user.username}, function (err, user) {
+exports.loginUser = function (req, res, next) {
+    passport.authenticate('local', function (err, user) {
         if (err) {
-            throw err;
+            next(err);
         }
 
-        if (!user) {
-            return res.status(401).send({message: 'Wrong email/password'});
-        }
-
-        user.verifyPassword(req.user.password, function (err, isMatch) {
+        req.login(user, function (err) {
             if (err) {
-                throw err;
-            }
-
-            if (!isMatch) {
-                return res.status(401).send({message: 'Wrong email/password'});
+                next(err);
             }
             createSendToken(user, res);
         });
-
-    });
+    })(req, res, next);
 };
 
 function createSendToken(user, res) {
