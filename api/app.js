@@ -2,7 +2,6 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
-var passport = require('passport');
 var config = require('./config');
 
 // Connect to the coffeelocker MongoDB
@@ -17,9 +16,7 @@ app.set('views', __dirname + '/views');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-// use the passport package in our app
-app.use(passport.initialize());
-require('./config/passport')();
+require('./config/passport')(app);
 
 // Use environment defined port or 300
 var port = process.env.PORT || config.port;
