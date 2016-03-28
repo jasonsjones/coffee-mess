@@ -1,4 +1,5 @@
 var userCtrl = require('../controllers/user.controller');
+var passport = require('passport');
 
 module.exports = function (api) {
 
@@ -10,5 +11,5 @@ module.exports = function (api) {
         .post(userCtrl.postUsers);
 
     api.route('/login')
-        .post(userCtrl.loginUser);
+        .post(passport.authenticate('local'), userCtrl.simpleLoginUser);
 };

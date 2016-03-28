@@ -56,6 +56,10 @@ exports.loginUser = function (req, res, next) {
     })(req, res, next);
 };
 
+exports.simpleLoginUser = function (req, res) {
+    createSendToken(req.user, res);
+};
+
 function createSendToken(user, res) {
     var payload = {
         sub: user.id
