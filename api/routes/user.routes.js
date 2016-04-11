@@ -11,5 +11,5 @@ module.exports = function (api) {
         .post(userCtrl.postUsers);
 
     api.route('/login')
-        .post(passport.authenticate('local'), userCtrl.simpleLoginUser);
+        .post(passport.authenticate('local-login'), userCtrl.simpleLoginUser);
 };
