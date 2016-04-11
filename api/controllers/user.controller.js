@@ -42,7 +42,7 @@ exports.getUsers = function (req, res) {
 };
 
 exports.loginUser = function (req, res, next) {
-    passport.authenticate('local', function (err, user) {
+    passport.authenticate('local-login', function (err, user) {
         if (err) {
             next(err);
         }
