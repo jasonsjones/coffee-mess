@@ -31,6 +31,10 @@ exports.postUsers = function (req, res) {
     });
 };
 
+exports.simplePostUser = function (req, res) {
+    createSendToken(req.user, res);
+};
+
 // Create endpoint /api/users for GET
 exports.getUsers = function (req, res) {
     User.find({}, function (err, users) {

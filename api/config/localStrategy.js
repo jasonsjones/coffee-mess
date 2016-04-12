@@ -29,8 +29,22 @@ module.exports = function () {
 
             return done(null, user);
         });
+    });
 
+    var registerStrategy = new LocalStrategy(function (username, password, done) {
+       var newUser = new User({
+           username: username,
+           password: password
+       });
+
+       newUser.save(function (err) {
+           if (err) {
+               done(err, null);
+           }
+           done(null, newUser);
+       });
     });
 
     passport.use('local-login', loginStrategy);
+    passport.use('local-register', registerStrategy);
 };
