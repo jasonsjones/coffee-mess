@@ -32,17 +32,30 @@ module.exports = function () {
     });
 
     var registerStrategy = new LocalStrategy(function (username, password, done) {
-       var newUser = new User({
-           username: username,
-           password: password
-       });
+        User.findOne({username: username}).exec(function (err, user) {
+            if (err) {
+                return done(err);
+            }
 
-       newUser.save(function (err) {
-           if (err) {
-               done(err, null);
-           }
-           done(null, newUser);
-       });
+            if (user) {
+                return done(null, false, {
+                    message: 'username already exists'
+                });
+            }
+
+           var newUser = new User({
+               username: username,
+               password: password
+           });
+
+           newUser.save(function (err) {
+               if (err) {
+                   done(err, null);
+               }
+               done(null, newUser);
+           });
+
+        });
     });
 
     passport.use('local-login', loginStrategy);
