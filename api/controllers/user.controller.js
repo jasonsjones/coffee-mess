@@ -31,7 +31,7 @@ exports.postUsers = function (req, res) {
     });
 };
 
-exports.simplePostUser = function (req, res) {
+exports.passportPostUser = function (req, res) {
     createSendToken(req.user, res);
 };
 
@@ -60,7 +60,7 @@ exports.loginUser = function (req, res, next) {
     })(req, res, next);
 };
 
-exports.simpleLoginUser = function (req, res) {
+exports.passportLoginUser = function (req, res) {
     createSendToken(req.user, res);
 };
 
