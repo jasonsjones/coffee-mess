@@ -9,5 +9,5 @@ module.exports = function (api) {
 
     // Create new route with prefix /login
     api.route('/login')
-        .post(passport.authenticate('local-login'), userCtrl.passLoginUser);
+        .post(passport.authenticate('local-login'), userCtrl.passportLoginUser);
 };
