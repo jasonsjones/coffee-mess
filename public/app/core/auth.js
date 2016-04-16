@@ -4,11 +4,12 @@
         .factory('auth', auth);
 
     //=====================
-    function auth($q, $http) {
+    function auth($q, $http, $window) {
 
         var factory = {
             register: register,
-            login: login
+            login: login,
+            googleAuth: googleAuth
         };
 
         return factory;
@@ -39,6 +40,16 @@
                 });
 
             return deferred.promise;
+        }
+
+        function googleAuth() {
+            console.log('firing googleAuth in the auth service');
+            var url = 'https://accounts.google.com/o/oauth2/auth';
+
+            var options = 'width=500, height=500, left=' + ($window.outerWidth - 500) / 2 +
+                          ', top =' + ($window.outerHeight - 500) / 2.5;
+
+            $window.open(url, '', options);
         }
     }
 }());

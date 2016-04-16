@@ -11,6 +11,7 @@
         vm.user = {};
 
         vm.login = login;
+        vm.googleLogin = googleLogin;
 
         function login(user) {
             console.log('just fired login in LoginController');
@@ -24,6 +25,12 @@
                 }, function (err) {
                     alert('danger', 'Login Error', 'Unable to login');
                 });
+        }
+
+        function googleLogin() {
+            console.log("firing googleLogin function in login controller...");
+            auth.googleAuth()
+                .then();
         }
 
     }
