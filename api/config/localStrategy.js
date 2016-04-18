@@ -32,7 +32,9 @@ module.exports = function () {
     });
 
     var registerStrategy = new LocalStrategy(function (username, password, done) {
-        User.findOne({username: username}).exec(function (err, user) {
+        User.findOne({
+            username: username
+        }).exec(function (err, user) {
             if (err) {
                 return done(err);
             }
@@ -43,18 +45,17 @@ module.exports = function () {
                 });
             }
 
-           var newUser = new User({
-               username: username,
-               password: password
-           });
+            var newUser = new User({
+                username: username,
+                password: password
+            });
 
-           newUser.save(function (err) {
-               if (err) {
-                   done(err, null);
-               }
-               done(null, newUser);
-           });
-
+            newUser.save(function (err) {
+                if (err) {
+                    done(err, null);
+                }
+                done(null, newUser);
+            });
         });
     });
 

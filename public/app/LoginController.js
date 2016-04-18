@@ -1,4 +1,4 @@
-(function (){
+(function () {
     'use strict';
 
     angular.module('app')
@@ -28,7 +28,7 @@
         }
 
         function googleLogin() {
-            console.log("firing googleLogin function in login controller...");
+            console.log('firing googleLogin function in login controller...');
             auth.googleAuth()
                 .then();
         }

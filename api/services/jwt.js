@@ -1,7 +1,7 @@
 var crypto = require('crypto');
 
 exports.encode = function (payload, secret) {
-    algorithm = 'HS256';
+    var algorithm = 'HS256';
 
     var header = {
         typ: 'JWT',
@@ -23,7 +23,7 @@ exports.decode = function (token, secret) {
 
     var rawSignature = segements[0] + '.' + segements[1];
 
-    if(!verify(rawSignature, secret, segements[2])) {
+    if (!verify(rawSignature, secret, segements[2])) {
         throw new Error('Verification Failed');
     }
 
