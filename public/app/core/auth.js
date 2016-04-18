@@ -59,6 +59,13 @@
                           ', top =' + ($window.outerHeight - 500) / 2.5;
 
             $window.open(url, '', options);
+            $window.focus();
+
+            $window.addEventListener('message', function (event) {
+                if (event.origin === $window.location.origin) {
+                    console.log(event.data);
+                }
+            });
             return deferred.promise;
         }
     }
