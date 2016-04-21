@@ -58,12 +58,13 @@
             var options = 'width=500, height=500, left=' + ($window.outerWidth - 500) / 2 +
                           ', top =' + ($window.outerHeight - 500) / 2.5;
 
-            $window.open(url, '', options);
+            var popUp = $window.open(url, '', options);
             $window.focus();
 
             $window.addEventListener('message', function (event) {
                 if (event.origin === $window.location.origin) {
                     console.log(event.data);
+                    popUp.close();
                 }
             });
             return deferred.promise;
