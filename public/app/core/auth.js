@@ -63,8 +63,12 @@
 
             $window.addEventListener('message', function (event) {
                 if (event.origin === $window.location.origin) {
-                    console.log(event.data);
+                    var code = event.data;
                     popUp.close();
+
+                    $http.post('api/auth/google', {
+                        code: code
+                    });
                 }
             });
             return deferred.promise;
