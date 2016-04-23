@@ -2,6 +2,8 @@
 var User = require('../models/user');
 var jwt = require('jwt-simple');
 var passport = require('passport');
+var request = require('request');
+var googleAuth = require('../../coffee-mess-creds.json').web;
 
 // Create endpoint /api/users for POST
 exports.postUsers = function (req, res) {
@@ -62,6 +64,25 @@ exports.loginUser = function (req, res, next) {
 
 exports.passportLoginUser = function (req, res) {
     createSendToken(req.user, res);
+};
+
+exports.googleAuth = function (req, res) {
+
+    var params = {
+        client_id: googleAuth.client_id,
+        client_secret: googleAuth.client_secret,
+        redirect_uri: googleAuth.redirect_uris[0],
+        code: req.body.code,
+        grant_type: 'authorization_code'
+    };
+
+    request.post(googleAuth.token_uri, {json: true, form: params},
+        function (err, response, token) {
+            if (err) {
+               console.log(err);
+            }
+            console.log(token);
+    });
 };
 
 function createSendToken(user, res) {

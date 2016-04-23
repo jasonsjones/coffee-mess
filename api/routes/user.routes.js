@@ -12,7 +12,5 @@ module.exports = function (api) {
         .post(passport.authenticate('local-login'), userCtrl.passportLoginUser);
 
     api.route('/auth/google')
-        .post(function (req, res) {
-            console.log(req.body.code);
-        });
+        .post(userCtrl.googleAuth);
 };
