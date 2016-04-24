@@ -68,6 +68,7 @@ exports.passportLoginUser = function (req, res) {
 
 exports.googleAuth = function (req, res) {
 
+    var apiUrl = 'https://www.googleapis.com/plus/v1/people/me/openIdConnect';
     var params = {
         client_id: googleAuth.client_id,
         client_secret: googleAuth.client_secret,
@@ -81,7 +82,18 @@ exports.googleAuth = function (req, res) {
             if (err) {
                console.log(err);
             }
-            console.log(token);
+
+            var accessToken = token.access_token;
+            var headers = {
+                Authorization: 'Bearer ' + accessToken
+            };
+
+            request.get({url: apiUrl, headers: headers, json: true},
+                function (err, response, profile) {
+                    console.log(profile);
+                });
+
+
     });
 };
 
