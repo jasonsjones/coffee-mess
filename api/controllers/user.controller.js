@@ -66,7 +66,7 @@ exports.passportLoginUser = function (req, res) {
     createSendToken(req.user, res);
 };
 
-exports.googleAuth = function (req, res) {
+exports.googleAuth = function (req, res, next) {
 
     var apiUrl = 'https://www.googleapis.com/plus/v1/people/me/openIdConnect';
     var params = {
@@ -90,10 +90,26 @@ exports.googleAuth = function (req, res) {
 
             request.get({url: apiUrl, headers: headers, json: true},
                 function (err, response, profile) {
-                    console.log(profile);
+                    if (err) {
+                        console.log(err);
+                    }
+
+                    User.findOne({googleId: profile.sub}, function (err, foundUser) {
+                       if (foundUser) {
+                           return createSendToken(foundUser, res);
+                       }
+
+                       var newUser = new User();
+                       newUser.googleId = profile.sub;
+                       newUser.displayName = profile.name;
+                       newUser.save(function (err) {
+                           if (err) {
+                               return next(err);
+                           }
+                           createSendToken(newUser, res);
+                       });
+                    });
                 });
-
-
     });
 };
 
@@ -104,7 +120,7 @@ function createSendToken(user, res) {
 
     var token = jwt.encode(payload, 'secretKey');
 
-    res.status(200).json({
+    return res.status(200).json({
         success: true,
         user: user.toJSON(),
         token: token
