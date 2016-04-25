@@ -44,7 +44,6 @@
 
 
         function googleAuth() {
-            console.log('firing googleAuth in the auth service');
             var deferred = $q.defer();
 
             var queryBuilder = [];
@@ -68,6 +67,11 @@
 
                     $http.post('api/auth/google', {
                         code: code
+                    }).success(function (data) {
+                        deferred.resolve(data);
+                    })
+                    .error(function (err) {
+                        deferred.reject(err);
                     });
                 }
             });
