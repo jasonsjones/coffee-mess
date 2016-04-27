@@ -5,13 +5,14 @@
         .controller('LoginController', LoginController);
 
     //=====================
-    LoginController.$inject = ['$location', 'alert', 'auth', 'authToken'];
-    function LoginController($location, alert, auth, authToken) {
+    LoginController.$inject = ['$location', 'alert', 'auth', 'authToken', '$auth'];
+    function LoginController($location, alert, auth, authToken, $auth) {
         var vm = this;
         vm.user = {};
 
         vm.login = login;
         vm.googleLogin = googleLogin;
+        vm.authenticate = authenticate;
 
         function login(user) {
             auth.login(user)
@@ -35,6 +36,19 @@
                 }, function (err) {
                     alert('danger', 'Login Error', 'Unable to login');
                 });
+        }
+
+        function authenticate(provider) {
+            $auth.authenticate(provider)
+                .then(function (res) {
+                    alert('success', 'Welcome Back', 'Successful login for ' +
+                           res.data.user.displayName + '!');
+                    authToken.setToken(res.data.token);
+                    $location.path('/');
+                }, function (err) {
+                    alert('danger', 'Login Error', 'Unable to login');
+                });
+
         }
 
     }

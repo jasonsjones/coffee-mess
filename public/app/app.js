@@ -5,9 +5,9 @@
         .config(config).run(runFn);
 
     //==================
-    config.$inject = ['$routeProvider', '$locationProvider', '$httpProvider'];
+    config.$inject = ['$routeProvider', '$locationProvider', '$httpProvider', '$authProvider'];
 
-    function config($routeProvider, $locationProvider, $httpProvider) {
+    function config($routeProvider, $locationProvider, $httpProvider, $authProvider) {
         $locationProvider.html5Mode(true);
 
         $routeProvider
@@ -32,6 +32,12 @@
                 controller: 'CoffeeController',
                 controllerAs: 'vm'
             });
+
+        $authProvider.google({
+            clientId: '334060514002-4f8a59tvvntacl6vb21oa762o4h9s89p.apps.googleusercontent.com',
+            url: 'api/auth/google',
+            redirectUri:  'https://coffee-mess-jsj0nes.c9users.io/oauth/callback'
+        });
 
         $httpProvider.interceptors.push('authInterceptor');
     }

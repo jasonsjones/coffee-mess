@@ -1,4 +1,4 @@
 (function() {
     'use strict';
-    angular.module('app', ['ngRoute', 'ngMessages', 'ngAnimate']);
+    angular.module('app', ['ngRoute', 'ngMessages', 'ngAnimate', 'satellizer']);
 }());
