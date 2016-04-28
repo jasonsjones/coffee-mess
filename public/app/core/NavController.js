@@ -4,11 +4,11 @@
         .controller('NavController', NavController);
 
     //=====================
-    NavController.$inject = ['$location', 'authToken', 'alert'];
-    function NavController($location, authToken, alert) {
+    NavController.$inject = ['$location', 'authToken', 'alert', '$auth'];
+    function NavController($location, authToken, alert, $auth) {
         var vm = this;
 
-        vm.isAuthenticated = authToken.isAuthenticated;
+        vm.isAuthenticated = $auth.isAuthenticated;
         vm.logout = logout;
         vm.isActive = isActive;
 

@@ -1,5 +1,6 @@
 // Load require packages
 var User = require('../models/user');
+var moment = require('moment');
 var jwt = require('jwt-simple');
 var passport = require('passport');
 var request = require('request');
@@ -115,7 +116,8 @@ exports.googleAuth = function (req, res, next) {
 
 function createSendToken(user, res) {
     var payload = {
-        sub: user.id
+        sub: user.id,
+        exp: moment.add(10, 'days').unix()
     };
 
     var token = jwt.encode(payload, 'secretKey');
