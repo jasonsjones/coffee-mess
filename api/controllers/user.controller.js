@@ -117,7 +117,7 @@ exports.googleAuth = function (req, res, next) {
 function createSendToken(user, res) {
     var payload = {
         sub: user.id,
-        exp: moment.add(10, 'days').unix()
+        exp: moment().add(10, 'days').unix()
     };
 
     var token = jwt.encode(payload, 'secretKey');
