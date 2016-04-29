@@ -17,7 +17,7 @@
         }
 
         function logout() {
-            authToken.removeToken();
+            $auth.logout();
             alert('success', 'Logout Successful:', 'you have successfully logged out, have a great day!');
             $location.path('/');
         }
