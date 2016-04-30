@@ -15,6 +15,12 @@
     "watch:css": "npm run build:css -- -w",
     "watch:public": "npm run watch:css & npm run livereload"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jasonsjones/coffee-mess.git"
+  },
+  "author": "Jason Jones",
+  "license": "MIT"
   "dependencies": {
     "angular": "1.4.9",
     "angular-animate": "1.5.0",
