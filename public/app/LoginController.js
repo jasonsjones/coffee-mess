@@ -15,11 +15,21 @@
         vm.authenticate = authenticate;
 
         function login(user) {
-            auth.login(user)
-                .then(function (data) {
+            // auth.login(user)
+            //     .then(function (data) {
+            //         alert('success', 'Welcome Back', 'Successful login for ' +
+            //               data.user.username + '!');
+            //         authToken.setToken(data.token);
+            //         $location.path('/');
+            //     }, function (err) {
+            //         alert('danger', 'Login Error', 'Unable to login');
+            //     });
+
+            $auth.login(user)
+                .then(function (res) {
                     alert('success', 'Welcome Back', 'Successful login for ' +
-                           data.user.username + '!');
-                    authToken.setToken(data.token);
+                           res.data.user.username + '!');
+                    authToken.setToken(res.data.token);
                     $location.path('/');
                 }, function (err) {
                     alert('danger', 'Login Error', 'Unable to login');
