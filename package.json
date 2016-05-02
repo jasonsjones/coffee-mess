@@ -1,6 +1,7 @@
 {
   "name": "coffee-mess",
   "main": "server.js",
+  "description": "A simple MEAN stack web app focusing on JWT authentication",
   "scripts": {
     "start": "nodemon api/app.js",
     "start:ngrok": "ngrok http -subdomain=coffee 3000",
