@@ -15,6 +15,8 @@
         vm.authenticate = authenticate;
 
         function login(user) {
+            // custom auth service to login a user
+            //
             // auth.login(user)
             //     .then(function (data) {
             //         alert('success', 'Welcome Back', 'Successful login for ' +
@@ -25,6 +27,8 @@
             //         alert('danger', 'Login Error', 'Unable to login');
             //     });
 
+            // use the satellizer service ($auth) vice the custom auth service that was
+            // written above (earlier in the course)
             $auth.login(user)
                 .then(function (res) {
                     alert('success', 'Welcome Back', 'Successful login for ' +
@@ -58,9 +62,6 @@
                 }, function (err) {
                     alert('danger', 'Login Error', 'Unable to login');
                 });
-
         }
-
     }
-
 }());
