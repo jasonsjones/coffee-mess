@@ -4,20 +4,22 @@
         .controller('RegistrationController', RegistrationController);
 
     //=====================
-    RegistrationController.$inject = ['$location', 'alert', 'auth', 'authToken'];
-    function RegistrationController($location, alert, auth, authToken) {
+    RegistrationController.$inject = ['$location', 'alert', 'auth', 'authToken', '$auth'];
+    function RegistrationController($location, alert, auth, authToken, $auth) {
         var vm = this;
         vm.user = {};
 
         vm.submit = submit;
 
         function submit(user) {
-            auth.register(user)
-                .then(function (data) {
-                    console.log(data.user);
-                    alert('success', 'Account Created!',  'Welcome, ' + data.user.username +
+            $auth.signup(user)
+            //auth.register(user)
+                // .then(function (data) {
+                .then(function (res) {
+                    console.log(res.data.user);
+                    alert('success', 'Account Created!',  'Welcome, ' + res.data.user.username +
                           '. You are now registered.', 3000);
-                    authToken.setToken(data.token);
+                    authToken.setToken(res.data.token);
                     $location.path('/');
                 }, function (err) {
                     alert('danger', 'Account Error', 'Unable to register account');
