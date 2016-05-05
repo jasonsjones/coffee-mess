@@ -4,7 +4,7 @@ var moment = require('moment');
 var jwt = require('jwt-simple');
 var passport = require('passport');
 var request = require('request');
-var googleAuth = require('../../coffee-mess-creds.json').web;
+var googleAuth = require('../../coffee-mess-creds.json').google;
 
 // Create endpoint /api/users for POST
 exports.postUsers = function (req, res) {
