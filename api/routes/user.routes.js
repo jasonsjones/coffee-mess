@@ -1,5 +1,6 @@
 var userCtrl = require('../controllers/user.controller');
 var passport = require('passport');
+var facebookAuth = require('../controllers/facebookAuth');
 
 module.exports = function (api) {
 
@@ -13,4 +14,7 @@ module.exports = function (api) {
 
     api.route('/auth/google')
         .post(userCtrl.googleAuth);
+
+    api.route('/auth/facebook')
+        .post(facebookAuth);
 };
