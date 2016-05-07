@@ -13,6 +13,7 @@ var UserSchema = new mongoose.Schema({
     password: {
         type: String,
     },
+    facebookId: String,
     googleId: String,
     displayName: String
 });
