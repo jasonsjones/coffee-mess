@@ -1,6 +1,7 @@
 var userCtrl = require('../controllers/user.controller');
 var passport = require('passport');
 var facebookAuth = require('../controllers/facebookAuth');
+var googleAuth = require('../controllers/googleAuth');
 
 module.exports = function (api) {
 
@@ -13,7 +14,7 @@ module.exports = function (api) {
         .post(passport.authenticate('local-login'), userCtrl.passportLoginUser);
 
     api.route('/auth/google')
-        .post(userCtrl.googleAuth);
+        .post(googleAuth);
 
     api.route('/auth/facebook')
         .post(facebookAuth);
