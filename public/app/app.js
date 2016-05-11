@@ -38,8 +38,13 @@
 
         $authProvider.google({
             clientId: '334060514002-4f8a59tvvntacl6vb21oa762o4h9s89p.apps.googleusercontent.com',
-            url: 'api/auth/google',
+            url: '/api/auth/google',
             redirectUri:  'https://coffee-mess-jsj0nes.c9users.io/oauth/callback'
+        });
+
+        $authProvider.facebook({
+            clientId: '1727162664168803',
+            url: '/api/auth/facebook'
         });
 
         $httpProvider.interceptors.push('authInterceptor');
