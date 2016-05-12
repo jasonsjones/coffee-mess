@@ -1,8 +1,7 @@
 // Load require packages
 var User = require('../models/user');
-var moment = require('moment');
-var jwt = require('jwt-simple');
 var passport = require('passport');
+var createSendToken = require('../services/createSendToken');
 
 // Create endpoint /api/users for POST
 exports.postUsers = function (req, res) {
@@ -64,18 +63,3 @@ exports.loginUser = function (req, res, next) {
 exports.passportLoginUser = function (req, res) {
     createSendToken(req.user, res);
 };
-
-function createSendToken(user, res) {
-    var payload = {
-        sub: user.id,
-        exp: moment().add(10, 'days').unix()
-    };
-
-    var token = jwt.encode(payload, 'secretKey');
-
-    return res.status(200).json({
-        success: true,
-        user: user.toJSON(),
-        token: token
-    });
-}
