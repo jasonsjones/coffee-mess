@@ -11,5 +11,5 @@ module.exports = function (app) {
         }
     });
 
-    require('./localStrategy')();
+    require('../services/localStrategy')();
 };
