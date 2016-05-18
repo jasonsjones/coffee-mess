@@ -2,6 +2,7 @@ var jwt = require('jwt-simple');
 var config = require('../../coffee-mess-creds.json');
 var fs = require('fs');
 var _ = require('underscore');
+var nodemailer = require('nodemailer');
 
 var model = {
     verifyUrl: 'https://coffee-mess-jsj0nes.c9users.io/auth/verifyEmail?token=',
@@ -10,14 +11,36 @@ var model = {
     body: 'Please verify your email address by clicking the button below'
 };
 
-exports.send = function (email) {
+exports.send = function (email, res) {
     var payload = {
         sub: email
     };
 
     var token = jwt.encode(payload, config.emailSecret);
 
-    console.log(getHtml(token));
+    var smtpConfig = {
+        service: 'gmail',
+        auth: {
+            user: 'meansandbox@gmail.com',
+            pass: config.gmailPass
+        }
+    };
+    var transporter = nodemailer.createTransport(smtpConfig);
+    var mailOptions = {
+        from: 'Accounts <meansandbox@gmail.com',
+        to: email,
+        subject: 'Coffee Mess Account Verification',
+        html: getHtml(token)
+    };
+
+    transporter.sendMail(mailOptions, function (err, info) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('email sent... ', info.response);
+        }
+
+    });
 };
 
 function getHtml(token) {

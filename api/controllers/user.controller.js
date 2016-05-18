@@ -2,6 +2,7 @@
 var User = require('../models/user');
 var passport = require('passport');
 var createSendToken = require('../services/createSendToken');
+var emailVerification = require('../services/emailVerification');
 
 // Create endpoint /api/users for POST
 exports.postUsers = function (req, res) {
@@ -32,6 +33,7 @@ exports.postUsers = function (req, res) {
 };
 
 exports.passportPostUser = function (req, res) {
+    emailVerification.send('jsjones96@gmail.com', res);
     createSendToken(req.user, res);
 };
 
