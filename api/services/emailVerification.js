@@ -19,7 +19,9 @@ exports.send = function (email, res) {
     var token = jwt.encode(payload, config.emailSecret);
 
     var smtpConfig = {
-        service: 'gmail',
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
         auth: {
             user: 'meansandbox@gmail.com',
             pass: config.gmailPass
