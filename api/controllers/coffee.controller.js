@@ -4,21 +4,26 @@ var jwt = require('jwt-simple');
 
 // Create endpoint /api/coffee for POSTS
 exports.postCoffees = function (req, res) {
-    // Create a new instance of the Coffee model
-    var coffee = new Coffee();
 
     // Set the coffee properties that come from the POST data
-    coffee.name = req.body.name;
-    coffee.type = req.body.type;
-    coffee.weight = req.body.weight;
-    coffee.userId = req.user._id;
+    var coffee = {
+        //userId = req.user._id;
+        name : req.body.name,
+        type : req.body.type,
+        weightWholeBean : req.body.weightWholeBean,
+        weightGround : req.body.weightGround,
+
+    };
+
+    // Create a new instance of the Coffee model
+    var newCoffee = new Coffee(coffee);
 
     // Save the coffee and check for errors
-    coffee.save(function (err) {
+    newCoffee.save(function (err) {
         if (err) {
             res.send(err);
         }
-        res.json({message: 'Coffee added to the locker!', data: coffee});
+        res.json({message: 'Coffee added to the locker!', data: newCoffee});
     });
 };
 
@@ -41,6 +46,7 @@ exports.getCoffees =  function (req, res) {
             roast: 'dark'
         }
     ];
+
     if (!req.headers.authorization) {
         return res.status(401).send({message: 'You are not authorized'});
     }
