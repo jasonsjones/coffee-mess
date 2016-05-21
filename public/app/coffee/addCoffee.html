@@ -1,0 +1,37 @@
+<div class="container">
+    <form ng-submit="vm.addCoffee(vm.coffee)" name="addCoffeeForm" class="form-login" novalidate>
+        <h1 class="text-muted">Add Coffee</h1>
+        <input type="text" name="coffeeName"
+               class="form-control" placeholder="Coffee Name..." ng-model="vm.coffee.name"
+               required autofocus>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit"><i class="fa fa-plus"></i> Add Coffee</button>
+<!--
+        <input type="text" name="username"
+               class="form-control" placeholder="Username" ng-model="vm.user.username"
+               required autofocus>
+
+        <div ng-messages="registrationForm.username.$error"
+             ng-show="registrationForm.username.$touched">
+            <div ng-messages-include="app/register/messages.html"></div>
+        </div>
+
+        <input type="password" name="password"
+               class="form-control" placeholder="Password" ng-model="vm.user.password"
+               ng-minlength="4" required>
+
+        <div ng-messages="registrationForm.password.$error"
+             ng-show="registrationForm.password.$touched">
+            <div ng-messages-include="app/register/messages.html"></div>
+        </div>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit"><i class="fa fa-sign-in"></i> Login</button>
+        <p class="text-muted text-center top-margin">Or login with any of the below services</p>
+        <button ng-click="vm.authenticate('google')" class="btn btn-lg btn-default btn-block" type="button"><i class="fa fa-google"></i> Google</button>
+        <button ng-click="vm.authenticate('facebook')" class="btn btn-lg btn-info btn-block" type="button"><i class="fa fa-facebook"></i> Facebook</button>
+
+        <a href="/register">Don't have an account?</a>
+        -->
+
+    </form>
+</div>
