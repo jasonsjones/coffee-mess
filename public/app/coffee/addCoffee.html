@@ -1,9 +1,22 @@
 <div class="container">
-    <form ng-submit="vm.addCoffee(vm.coffee)" name="addCoffeeForm" class="form-login" novalidate>
-        <h1 class="text-muted">Add Coffee</h1>
+    <form ng-submit="vm.addCoffee(vm.newCoffee)" name="addCoffeeForm" class="form-login" novalidate>
+        <h1 class="text-muted">Add Coffee to the Mess</h1>
+
         <input type="text" name="coffeeName"
-               class="form-control" placeholder="Coffee Name..." ng-model="vm.coffee.name"
+               class="form-control" placeholder="Coffee Name..." ng-model="vm.newCoffee.name"
                required autofocus>
+
+        <input type="text" name="coffeeType"
+               class="form-control" placeholder="Coffee Type..." ng-model="vm.newCoffee.type"
+               required >
+
+        <input type="number" name="wholeBeanWeight"
+               class="form-control" placeholder="Whole Bean Weight (oz)"
+               ng-model="vm.newCoffee.weightWholeBean" min="0">
+
+        <input type="number" name="groundWeight"
+               class="form-control" placeholder="Ground Weight (oz)"
+               ng-model="vm.newCoffee.weightGround" min="0">
 
         <button class="btn btn-lg btn-primary btn-block" type="submit"><i class="fa fa-plus"></i> Add Coffee</button>
 <!--

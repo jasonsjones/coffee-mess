@@ -31,6 +31,11 @@
                 templateUrl: 'app/coffee/coffee.html',
                 controller: 'CoffeeController',
                 controllerAs: 'vm'
+            })
+            .when('/addCoffee', {
+                templateUrl: 'app/coffee/addCoffee.html',
+                controller: 'CoffeeController',
+                controllerAs: 'vm'
             });
 
         $authProvider.loginUrl = '/api/login'   ;
