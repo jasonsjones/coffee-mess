@@ -36,6 +36,20 @@ nav {
     }
 }
 
+.form-addCoffee {
+    max-width: 550px;
+    margin: 0 auto;
+    .form-control {
+        border-radius: 0;
+        border-bottom: 1px solid #ccc;
+    }
+    button {
+        border-radius: 0;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+
 .main-alert {
     position: absolute;
     top: 70px;
