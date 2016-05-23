@@ -9,7 +9,8 @@
     function coffee($q, $http) {
 
         var factory = {
-            getCoffee: getCoffee
+            getCoffee: getCoffee,
+            addCoffee: addCoffee
         };
 
         return factory;
@@ -23,6 +24,19 @@
                 .error(function (err) {
                     deferred.reject(err);
                 });
+            return deferred.promise;
+        }
+
+        function addCoffee(newCoffee) {
+            var deferred = $q.defer();
+            $http.post('/api/coffee', newCoffee)
+                .success(function (data) {
+                    deferred.resolve(data);
+                })
+                .error(function (err) {
+                    deferred.reject(err);
+                });
+
             return deferred.promise;
         }
     }
