@@ -58,14 +58,15 @@ exports.getCoffees =  function (req, res) {
         res.status(401).send({message: 'Authentication failied'});
     }
 
-    res.json(coffees);
+    // res.json(coffees);
 
-    // Coffee.find({userId: req.user._id}, function (err, coffee) {
-    //     if (err) {
-    //         res.send(err);
-    //     }
-    //     res.json(coffee);
-    // });
+    Coffee.find({/* userId: req.user._id */}, function (err, coffee) {
+        if (err) {
+            res.send(err);
+        }
+        console.log(coffee);
+        res.json(coffee);
+    });
 };
 
 // Create endpoint /api/coffee/:coffee_id for GET
