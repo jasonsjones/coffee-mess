@@ -23,8 +23,12 @@
 
         function addCoffee() {
             console.log('adding some coffee to the mess...');
-            console.log(vm.newCoffee);
-            vm.newCoffee = {};
+            coffee.addCoffee(vm.newCoffee)
+                .then(function (data) {
+                    console.log(data);
+                    vm.newCoffee = {};
+                    alert('success', 'Coffee added to the mess...' + data.data.name);
+                });
         }
 
         function getCoffee() {
