@@ -29,23 +29,6 @@ exports.postCoffees = function (req, res) {
 
 // Create endpoint /api/coffee for GET
 exports.getCoffees =  function (req, res) {
-    var coffees = [
-        {
-            name: 'Pike Place',
-            weight: '1',
-            roast: 'medium'
-        },
-        {
-            name: 'Morning Joe',
-            weight: '2',
-            roast: 'dark'
-        },
-        {
-            name: 'Espresso Roast',
-            weight: '1',
-            roast: 'dark'
-        }
-    ];
 
     if (!req.headers.authorization) {
         return res.status(401).send({message: 'You are not authorized'});
@@ -58,13 +41,10 @@ exports.getCoffees =  function (req, res) {
         res.status(401).send({message: 'Authentication failied'});
     }
 
-    // res.json(coffees);
-
-    Coffee.find({/* userId: req.user._id */}, function (err, coffee) {
+    Coffee.find({}, function (err, coffee) {
         if (err) {
             res.send(err);
         }
-        console.log(coffee);
         res.json(coffee);
     });
 };

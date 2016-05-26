@@ -8,7 +8,7 @@
     CoffeeController.$inject = ['coffee', 'alert'];
     function CoffeeController(coffee, alert) {
         var vm = this;
-        vm.coffee = {};
+        vm.coffee = null;
         vm.newCoffee = {};
         vm.getCoffee = getCoffee;
         vm.addCoffee = addCoffee;
@@ -41,5 +41,4 @@
         }
 
     }
-
 }());
