@@ -1,13 +1,11 @@
 <div class="container">
     <h1>Coffee</h1>
-    <div class="row">
         <div ng-repeat="coffee in vm.coffee">
-            <div class="well col-sm-4">
-                <p>{{coffee.name}}</p>
-                <p>{{coffee.type}}</p>
-                <p>{{coffee.weightWholeBean}}</p>
-                <p>{{coffee.weightGround}}</p>
+            <div class="col-sm-4">
+                <p>Name: {{coffee.name}}</p>
+                <p>Type: {{coffee.type}}</p>
+                <p>Whole Beans (oz): {{coffee.weightWholeBean}}</p>
+                <p>Grounds (oz): {{coffee.weightGround}}</p>
             </div>
         </div>
-    </div>
 </div>
