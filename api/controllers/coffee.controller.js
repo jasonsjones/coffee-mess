@@ -41,11 +41,14 @@ exports.getCoffees =  function (req, res) {
         res.status(401).send({message: 'Authentication failied'});
     }
 
-    Coffee.find({}, function (err, coffee) {
+    console.log(payload);
+
+    Coffee.find({}, function (err, coffees) {
         if (err) {
             res.send(err);
         }
-        res.json(coffee);
+        console.log(coffees)
+        res.json(coffees);
     });
 };
 
