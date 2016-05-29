@@ -32,6 +32,11 @@
                 controller: 'CoffeeController',
                 controllerAs: 'vm'
             })
+            .when('/coffee/:coffeeId', {
+                templateUrl: 'app/coffee/coffeeDetails.html',
+                controller: 'CoffeeDetailsController',
+                controllerAs: 'vm'
+            })
             .when('/addCoffee', {
                 templateUrl: 'app/coffee/addCoffee.html',
                 controller: 'CoffeeController',
