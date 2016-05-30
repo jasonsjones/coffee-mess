@@ -30,24 +30,13 @@ exports.postCoffees = function (req, res) {
 // Create endpoint /api/coffee for GET
 exports.getCoffees =  function (req, res) {
 
-    if (!req.headers.authorization) {
-        return res.status(401).send({message: 'You are not authorized'});
-    }
+    //verifyAuthorization(req, res);
 
-    var token = req.headers.authorization.split(' ')[1];
-    var payload = jwt.decode(token, 'secretKey');
-
-    if (!payload.sub) {
-        res.status(401).send({message: 'Authentication failied'});
-    }
-
-    console.log(payload);
-
-    Coffee.find({}, function (err, coffees) {
+    Coffee.find({/*userId: req.user._id,*/}, function (err, coffees) {
         if (err) {
             res.send(err);
         }
-        console.log(coffees)
+        console.log(coffees);
         res.json(coffees);
     });
 };
@@ -55,10 +44,11 @@ exports.getCoffees =  function (req, res) {
 // Create endpoint /api/coffee/:coffee_id for GET
 exports.getCoffee = function (req, res) {
     // Use the coffee model to find a specific coffee
-    Coffee.findOne({userId: req.user._id, _id: req.params.coffeeId}, function (err, coffee) {
+    Coffee.findOne({/*userId: req.user._id,*/ _id: req.params.coffeeId}, function (err, coffee) {
         if (err) {
             res.send(err);
         }
+        console.log(coffee);
         res.json(coffee);
     });
 };
@@ -66,19 +56,21 @@ exports.getCoffee = function (req, res) {
 // Create endpoint /api/coffee/:coffee_id for PUT
 exports.putCoffee = function (req, res) {
     // Use the coffee model to find a specific coffee
-    Coffee.findOne({userId: req.user._id, _id: req.params.coffeeId}, function (err, coffee) {
+    Coffee.findOne({/*userId: req.user._id,*/ _id: req.params.coffeeId}, function (err, coffee) {
         if (err) {
             res.send(err);
         }
 
         // update the existing coffee weight
-        coffee.weight = req.body.weight;
+        coffee.weightGround = req.body.weightGround;
+        coffee.weightWholeBean = req.body.weightWholeBean;
 
         // save the coffee and check for errors
         coffee.save(function (err) {
             if (err) {
                 res.send(err);
             }
+            console.log(coffee);
             res.json(coffee);
         });
     });
@@ -91,6 +83,21 @@ exports.deleteCoffee = function (req, res) {
         if (err) {
             res.send(err);
         }
-        res.json({message: 'Coffee removed from the locker!'});
+        res.json({message: 'Coffee removed from the mess!'});
     });
 };
+
+function verifyAuthorization(req, res) {
+    if (!req.headers.authorization) {
+        return res.status(401).send({message: 'You are not authorized'});
+    } else {
+        var token = req.headers.authorization.split(' ')[1];
+        var payload = jwt.decode(token, 'secretKey');
+
+        if (!payload.sub) {
+            return res.status(401).send({message: 'Authentication failied'});
+        }
+        console.log(payload);
+
+    }
+}
