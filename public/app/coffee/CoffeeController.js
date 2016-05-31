@@ -8,7 +8,7 @@
     CoffeeController.$inject = ['coffee', 'alert'];
     function CoffeeController(coffee, alert) {
         var vm = this;
-        vm.coffee = null;
+        vm.coffees = null;
         vm.newCoffee = {};
         vm.getCoffee = getCoffee;
         vm.addCoffee = addCoffee;
@@ -16,7 +16,7 @@
         init();
 
         function init() {
-            if (!vm.coffee) {
+            if (!vm.coffees) {
                 vm.getCoffee();
             }
         }
@@ -34,11 +34,10 @@
         function getCoffee() {
             coffee.getCoffee()
                 .then(function (data) {
-                    vm.coffee = data;
+                    vm.coffees = data;
                 }, function (err) {
                     alert('warning', 'Unable to get coffee', err.message);
                 });
         }
-
     }
 }());
