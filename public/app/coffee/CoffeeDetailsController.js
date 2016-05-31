@@ -5,8 +5,17 @@
         .controller('CoffeeDetailsController', CoffeeDetailsController);
 
     //=====================
-    CoffeeDetailsController.$inject = ['coffee', 'alert'];
-    function CoffeeDetailsController(coffee, alert) {
+    CoffeeDetailsController.$inject = ['$routeParams', 'coffee', 'alert'];
+    function CoffeeDetailsController($routeParams, coffee, alert) {
+        var vm = this;
+        vm.coffee = null;
+        var coffeeId = $routeParams.coffeeId;
+
+        init();
+
+        function init () {
+            console.log($routeParams);
+        }
 
     }
 })();
