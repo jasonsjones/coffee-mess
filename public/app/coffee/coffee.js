@@ -10,7 +10,8 @@
 
         var factory = {
             getCoffee: getCoffee,
-            addCoffee: addCoffee
+            addCoffee: addCoffee,
+            getOneCoffee: getOneCoffee
         };
 
         return factory;
@@ -38,6 +39,20 @@
                 });
 
             return deferred.promise;
+        }
+
+        function getOneCoffee(coffeeId) {
+            var deferred = $q.defer();
+            $http.get('/api/coffee/'+ coffeeId)
+                .success(function (data) {
+                    deferred.resolve(data);
+                })
+                .error(function (err) {
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
+
         }
     }
 

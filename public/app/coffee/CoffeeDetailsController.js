@@ -15,6 +15,15 @@
 
         function init () {
             console.log($routeParams);
+            getTheCoffe();
+        }
+
+        function getTheCoffe() {
+            coffee.getOneCoffee(coffeeId)
+                .then(function (data) {
+                    vm.coffee = data;
+                    console.log(vm.coffee);
+                });
         }
 
     }
