@@ -11,8 +11,8 @@ var CoffeeSchema = new mongoose.Schema({
 
 CoffeeSchema.methods.grind = function (amount) {
     if (this.weightWholeBean > amount) {
-        this.weightWholeBean -= amount;
-        this.weightGround += amount;
+        this.weightWholeBean -= parseInt(amount, 10);
+        this.weightGround += parseInt(amount, 10);
     }
 };
 
