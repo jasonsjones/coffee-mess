@@ -95,6 +95,8 @@ exports.grindCoffee = function (req, res) {
 
         if (coffee) {
             console.info("we are going to grind some of this coffee" + coffee);
+            coffee.grind(req.params.amount);
+            res.json(coffee);
         }
     });
 };
