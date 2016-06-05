@@ -87,6 +87,18 @@ exports.deleteCoffee = function (req, res) {
     });
 };
 
+exports.grindCoffee = function (req, res) {
+    Coffee.findOne({/*userId: req.user._id,*/ _id: req.params.coffeeId}, function (err, coffee) {
+        if (err) {
+            res.send(err);
+        }
+
+        if (coffee) {
+            console.info("we are going to grind some of this coffee" + coffee);
+        }
+    });
+};
+
 function verifyAuthorization(req, res) {
     if (!req.headers.authorization) {
         return res.status(401).send({message: 'You are not authorized'});

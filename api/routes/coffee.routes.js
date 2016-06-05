@@ -11,4 +11,7 @@ module.exports = function (api) {
         .get(coffeeCtrl.getCoffee)
         .put(coffeeCtrl.putCoffee)
         .delete(coffeeCtrl.deleteCoffee);
+
+    api.route('/coffee/:coffeeId/grind/:amount')
+        .put(coffeeCtrl.grindCoffee);
 };
