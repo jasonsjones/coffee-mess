@@ -2,10 +2,8 @@
     <h1>Coffee</h1>
         <div ng-repeat="coffee in vm.coffees">
             <div class="col-sm-4">
-                <p>Name: {{coffee.name}}</p>
-                <p>Type: {{coffee.type}}</p>
-                <p>Whole Beans (oz): {{coffee.weightWholeBean}}</p>
-                <p>Grounds (oz): {{coffee.weightGround}}</p>
+                <h3><a ng-href="/coffee/{{coffee._id}}">{{coffee.name}}</a></h3>
+                <p>{{coffee.type}}</p>
             </div>
         </div>
 </div>
