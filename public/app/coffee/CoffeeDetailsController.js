@@ -9,7 +9,10 @@
     function CoffeeDetailsController($routeParams, coffee, alert) {
         var vm = this;
         vm.coffee = null;
+        vm.grindAmount = 0;
         var coffeeId = $routeParams.coffeeId;
+
+        vm.grind = grind;
 
         init();
 
@@ -26,5 +29,8 @@
                 });
         }
 
+        function grind() {
+            console.log('grinding ' + vm.grindAmount + ' oz of coffee');
+        }
     }
 })();
