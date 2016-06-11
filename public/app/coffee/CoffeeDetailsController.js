@@ -17,20 +17,20 @@
         init();
 
         function init () {
-            console.log($routeParams);
-            getTheCoffe();
+            getTheCoffee();
         }
 
-        function getTheCoffe() {
+        function getTheCoffee() {
             coffee.getOneCoffee(coffeeId)
                 .then(function (data) {
                     vm.coffee = data;
-                    console.log(vm.coffee);
                 });
         }
 
         function grind() {
-            console.log('grinding ' + vm.grindAmount + ' oz of coffee');
+            if (vm.grindAmount > 0) {
+                coffee.grindCoffee(vm.coffee._id, vm.grindAmount);
+            }
         }
     }
 })();

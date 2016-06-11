@@ -11,7 +11,8 @@
         var factory = {
             getCoffee: getCoffee,
             addCoffee: addCoffee,
-            getOneCoffee: getOneCoffee
+            getOneCoffee: getOneCoffee,
+            grindCoffee: grindCoffee
         };
 
         return factory;
@@ -52,6 +53,11 @@
                 });
 
             return deferred.promise;
+        }
+
+        function grindCoffee(id, amount) {
+            console.info('Coffee Service: id -- ' + id);
+            console.info('Coffee Service: grinding ' +amount+ ' oz of coffee');
 
         }
     }
