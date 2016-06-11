@@ -1,4 +1,3 @@
-
 <div class="container">
     <h1>Coffee Details</h1>
     <p>Name: {{vm.coffee.name}}</p>
@@ -6,12 +5,14 @@
     <p>Whole Beans (oz): {{vm.coffee.weightWholeBean}}</p>
     <p>Grounds (oz): {{vm.coffee.weightGround}}</p>
 
-<div class="row">
-   <div class="col-md-4">
-    <input type="number" name="grindAmount"
-           class="form-control" placeholder="Amount of beans to grind" ng-model="vm.grindAmount"
-           required autofocus>
-    <button class="btn btn-lg btn-primary" ng-click="vm.grind()"></i> Grind</button>
-   </div>
-</div>
+    <div class="row">
+        <div class="col-md-6">
+            <form class="form-inline">
+                <input type="number" name="grindAmount" min="0" class="form-control"
+                       placeholder="Amount of beans to grind" ng-model="vm.grindAmount"
+                       required autofocus>
+                <button class="btn btn-lg btn-primary" ng-click="vm.grind()"></i> Grind</button>
+            </form>
+        </div>
+    </div>
 </div>
