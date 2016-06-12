@@ -1,9 +1,14 @@
 <div class="container">
     <h1>Coffee</h1>
+    <div class="row">
         <div ng-repeat="coffee in vm.coffees">
             <div class="col-sm-4">
                 <h3><a ng-href="/coffee/{{coffee._id}}">{{coffee.name}}</a></h3>
                 <p>{{coffee.type}}</p>
             </div>
         </div>
+    </div>
+    <div class="row">
+        <a href="/addCoffee" class="btn btn-primary"><i class="fa fa-plus"></i> Add Coffee</a>
+    </div>
 </div>
