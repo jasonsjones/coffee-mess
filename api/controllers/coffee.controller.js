@@ -70,7 +70,6 @@ exports.putCoffee = function (req, res) {
             if (err) {
                 res.send(err);
             }
-            console.log(coffee);
             res.json(coffee);
         });
     });
@@ -101,7 +100,6 @@ exports.grindCoffee = function (req, res) {
                 if (err) {
                     res.send(err);
                 }
-                console.log(coffee);
                 res.json(coffee);
             });
         }

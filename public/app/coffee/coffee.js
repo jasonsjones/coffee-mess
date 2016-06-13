@@ -58,7 +58,16 @@
         function grindCoffee(id, amount) {
             console.info('Coffee Service: id -- ' + id);
             console.info('Coffee Service: grinding ' +amount+ ' oz of coffee');
+            var deferred = $q.defer();
+            $http.put('/api/coffee/' + id + '/grind/' + amount)
+                .success(function (data) {
+                    deferred.resolve(data);
+                })
+                .error(function (err) {
+                    deferred.reject(err);
+                });
 
+            return deferred.promise;
         }
     }
 

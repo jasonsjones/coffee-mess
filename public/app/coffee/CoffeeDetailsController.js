@@ -29,7 +29,11 @@
 
         function grind() {
             if (vm.grindAmount > 0) {
-                coffee.grindCoffee(vm.coffee._id, vm.grindAmount);
+                coffee.grindCoffee(vm.coffee._id, vm.grindAmount)
+                    .then(function (data) {
+                        vm.coffee = data;
+                        vm.grindAmount = 0;
+                    });
             }
         }
     }
