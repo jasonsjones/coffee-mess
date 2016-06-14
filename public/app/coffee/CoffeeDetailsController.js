@@ -32,6 +32,7 @@
                 coffee.grindCoffee(vm.coffee._id, vm.grindAmount)
                     .then(function (data) {
                         vm.coffee = data;
+                        alert('success', 'Just ground '+ vm.grindAmount + ' oz of coffee');
                         vm.grindAmount = 0;
                     });
             }
