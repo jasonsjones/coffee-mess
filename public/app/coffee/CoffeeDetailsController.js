@@ -22,11 +22,13 @@
 
         function getTheCoffee() {
             if (!vm.coffee) {
-                console.log("Getting a fresh cup from the server...");
+                console.info("Getting a fresh cup from the server...");
                 coffee.getOneCoffee(coffeeId)
                     .then(function (data) {
                         vm.coffee = data;
                     });
+            } else {
+                console.info("Serving the same cup from cache...");
             }
         }
 
