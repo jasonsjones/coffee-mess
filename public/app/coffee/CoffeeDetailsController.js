@@ -21,10 +21,13 @@
         }
 
         function getTheCoffee() {
-            coffee.getOneCoffee(coffeeId)
-                .then(function (data) {
-                    vm.coffee = data;
-                });
+            if (!vm.coffee) {
+                console.log("Getting a fresh cup from the server...");
+                coffee.getOneCoffee(coffeeId)
+                    .then(function (data) {
+                        vm.coffee = data;
+                    });
+            }
         }
 
         function grind() {
