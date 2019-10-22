@@ -37,7 +37,7 @@
     "jquery": "3.4.0",
     "jwt-simple": "0.5.3",
     "moment": "^2.13.0",
-    "mongoose": "^4.3.0",
+    "mongoose": "^5.7.6",
     "node-sass": "3.4.2",
     "nodemailer": "^2.4.1",
     "passport": "^0.2.1",
